@@ -1,0 +1,68 @@
+{
+  "name": "variant-web-storage",
+  "version": "0.1.0",
+  "description": "Web Storage with support for complex data types",
+  "repository": "julesferreira/variant-web-storage",
+  "keywords": [
+    "localstorage",
+    "serialization",
+    "typescript"
+  ],
+  "author": "jules",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "analyze": "size-limit --why",
+    "build": "tsdx build",
+    "lint": "tsdx lint src",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "start": "tsdx watch",
+    "test": "tsdx test",
+    "test:coverage": "tsdx test --coverage --no-cache",
+    "test:watch": "tsdx test --watch --no-cache"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "module": "dist/variant-web-storage.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/variant-web-storage.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/variant-web-storage.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
+    "@size-limit/preset-small-lib": "^6.0.3",
+    "husky": "^7.0.2",
+    "jest-mock-extended": "^2.0.4",
+    "size-limit": "^6.0.3",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typescript": "^3.9.10"
+  },
+  "dependencies": {
+    "@digitak/bunker": "^3.0.7"
+  }
+}
