@@ -1,4 +1,5 @@
 import { bunker, debunker } from '@digitak/bunker';
+import { fromByteArray, toByteArray } from 'base64-js';
 
 /**
  * Web Storage with support for complex data types
@@ -116,15 +117,7 @@ const VARIANT_PREFIX = '\u{2592}v1\u{2592}';
 function encode(value: unknown): string {
   try {
     const encodedValue = bunker(value);
-    return (
-      VARIANT_PREFIX +
-      Buffer.from(
-        // share encoded value's memory
-        encodedValue.buffer,
-        encodedValue.byteOffset,
-        encodedValue.byteLength
-      ).toString('base64')
-    );
+    return VARIANT_PREFIX + fromByteArray(encodedValue);
   } catch (e) {
     throw new VariantError(`Unable to encode value: '${value}'\n${e}`);
   }
@@ -136,7 +129,7 @@ function encode(value: unknown): string {
  */
 function decode(value: string): unknown {
   try {
-    return debunker(Buffer.from(value.substr(VARIANT_PREFIX.length), 'base64'));
+    return debunker(toByteArray(value.substr(VARIANT_PREFIX.length)));
   } catch (e) {
     throw new VariantError(`Unable to decode value: '${value}'\n${e}`);
   }

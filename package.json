@@ -1,6 +1,6 @@
 {
   "name": "variant-web-storage",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Web Storage with support for complex data types",
   "repository": "julesferreira/variant-web-storage",
   "keywords": [
@@ -63,7 +63,8 @@
     "typescript": "^3.9.10"
   },
   "dependencies": {
-    "@digitak/bunker": "^3.0.7"
+    "@digitak/bunker": "^3.0.7",
+    "base64-js": "^1.5.1"
   },
   "overrides": {
     "ansi-regex": "2.1.1",
